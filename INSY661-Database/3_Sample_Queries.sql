@@ -69,9 +69,9 @@
     SELECT o.customer_id, SUM(order_fee + fee_cut_from_vendor + fee_service_fee + fee_delivery_fee + fee_tips + fee_tax) as totalSpending
     FROM placed_orders o
     JOIN
-    (SELECT order_id, SUM(unit_price * unit_ordered) order_fee
-    FROM order_item 
-    GROUP BY order_id) of
+        (SELECT order_id, SUM(unit_price * unit_ordered) order_fee
+          FROM order_item 
+          GROUP BY order_id) of
     ON o.order_id = of.order_id
     GROUP BY o.customer_id
     ORDER BY totalSpending DESC
@@ -231,9 +231,12 @@ WHERE courier_id NOT IN
     SELECT DISTINCT delivery_method, 
     COUNT(*) OVER(PARTITION BY delivery_method) AS method_count
     FROM placed_orders)
-    SELECT delivery_method FROM (
-    SELECT delivery_method, RANK() OVER(ORDER BY method_count DESC) method_rank
-    FROM method_ranks) rnk
+    
+    SELECT delivery_method 
+    FROM (
+            SELECT delivery_method, RANK() OVER(ORDER BY method_count DESC) method_rank
+            FROM method_ranks
+         ) rnk
     WHERE method_rank = 1;
 
 /* ---- ---- ---- CUISINE ---- ---- ---- */
