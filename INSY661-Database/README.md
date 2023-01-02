@@ -1,6 +1,4 @@
-This is an master course project for <b> INSY661 Database and Distributed Systems </b> at McGill University in Summer 2022 Semester.
-
- - In collaboration with my teammates Alicia(Yihui), Pedro, Rohanna, and Konstantin. 
+This is a group project for the database course. (In collaboration with my teammates Alicia(Yihui), Pedro, Rohanna, and Konstantin.)
 
 The project follows the database design phases.  <b> This repo only includes queries created at Phase 3. </b> 
 
