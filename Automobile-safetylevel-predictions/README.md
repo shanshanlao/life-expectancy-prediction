@@ -32,25 +32,40 @@ The dependent variable symboling is an insurance risk level indicator with 6 lev
 The 15 quantitative variables were explored by visualizing them with boxplots and histograms. The histograms showed that while some variables had a normal or nearly-normal distribution (length, stroke), which tells us that most cars in the market had an average car size between 170 to 180 and an average pistol size between 3 and 3.5, with only a few being extremely large or small. 
 
 <p float="center">
-  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_length.png" width="400" />
-  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_stroke.png" width="400" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_length.png" width="450" />
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_stroke.png" width="450" /> 
 </p>
 
 Some others were right-skewed (engine-size, horsepower, price, compression-ratio). This distribution tells us that even though the car price ranged from around $5,000 to $45,000, almost 85% were under $20,000, and half were below $10,000. This demonstrated the consumer affordability of an automobile in 1995. 
 
 <p float="center">
-  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_price.png" width="400" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_price.png" width="450" /> 
 </p>
-
 
 It is also noted that these variables have huge differences in their range. (stroke and price for example). Such inconsistency might affect the interpretability of the model and generate biased results, as variables with larger values tend to be weighted more heavily. In an attempt to eliminate this impact, the scale() function was introduced to ensure that every numeric variable is measured in the same way, while retaining the original distribution. 
 
 Some extreme outliers were spotted in the boxplot for the variable compression-ratio revealed. Meanwhile, its histogram revealed that there was a huge gap in its distribution, which might be something to watch out for. However, no data cleaning was done for this variable at this stage, as it is uncertain if the predictor will have a significant impact on the final prediction.
 
+<p float="center">
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_boxplot_compression-ratio.png" width="450" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_compression-ratio.png" width="450" /> 
+</p>
+
 ## 2.4 Categorical values
 The 10 categorical variables were analyzed with bar plots, which display the frequency of each category for each variable. The variables engine-locations, fuel-type and aspiration only had two subcategories each, and they were primarily centred on one of them. Approximately 98.5%(194 out of 197) of the cars had their engine located in the front, 90.6%(178 out of 197) used gas as fuel rather than diesel, and 81.7% had a standard aspiration system instead of turbo. These three variables were removed because they offered very little variability in the classification model.
 
+<p float="center">
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/cat_barplot_engine-location.png" width="300" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/cat_barplot_fuel-type.png" width="300" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/cat_barplot_aspiration.png" width="300" /> 
+</p>
+
 Some other predictors with more than two levels, such as num-of-clinders and engine-type, also had a relatively high frequency on specific sub-categories. Around 78.7% of the autos had four cylinders, and 73.1% had an overhead camshaft (OHC) engine. These two variables were re-classified by grouping the other sub-categories together as Others. There were 22 brands of cars and 8 types of fuel systems in this dataset. The frequency in each level in the predictor varies, some of them did not have sufficient records. For the levels that had less than 5 observations, they were also renamed as a new category, Others.
+
+<p float="center">
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/cat_barplot_engine-type.png" width="450" /> 
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/cat_barplot_num-of-cylinders.png" width="450" /> 
+</p>
 
 ## 2.5 Relationship between Variables
 Both a correlation matrix and a Principal Component Analysis (PCA) plot were generated to understand the relationship between numerical variables.
@@ -62,6 +77,8 @@ According to the results from PCA table (See above), variables highway-mpg, leng
 ![pca](https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/pca.png)
 
 In order to decide which variables to keep, a random forest model was built to help identify the feature importance. The variables with relatively lower importance were dropped, including highway-mpg, price, bore, width and stroke.
+
+![feature importance_table](https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/featureImp_table.png)
 
 
 
