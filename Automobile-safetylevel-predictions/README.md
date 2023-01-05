@@ -29,7 +29,19 @@ Missing values in predictor price were replaced by the average price of its resp
 The dependent variable symboling is an insurance risk level indicator with 6 levels ranging from -3 to 3 (but it starts from -2 in this dataset). The smaller the value, the safer the auto. Any auto that has a rating larger than 0 was considered more dangerous than its price indicated. For simplicity, symboling was converted into a binary variable is risky, where 1 indicates the car is risky and 0 otherwise. Around 55% of the cars were evaluated as risky.
 
 ## 2.3 Numerical values
-The 15 quantitative variables were explored by visualizing them with boxplots and histograms. The histograms showed that while some variables had a normal or nearly-normal distribution (length, stroke), some others were right-skewed (engine-size, horsepower, price, compression-ratio). This distribution tells us that most cars in the market had an average car size between 170 to 180 and an average pistol size between 3 and 3.5, with only a few being extremely large or small. Even though the car price ranged from around $5,000 to $45,000, almost 85% were under $20,000, and half were below $10,000. This demonstrated the consumer affordability of an automobile in 1995. 
+The 15 quantitative variables were explored by visualizing them with boxplots and histograms. The histograms showed that while some variables had a normal or nearly-normal distribution (length, stroke), which tells us that most cars in the market had an average car size between 170 to 180 and an average pistol size between 3 and 3.5, with only a few being extremely large or small. 
+
+<p float="center">
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_length.png" width="400" />
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_stroke.png" width="400" /> 
+</p>
+
+Some others were right-skewed (engine-size, horsepower, price, compression-ratio). This distribution tells us that even though the car price ranged from around $5,000 to $45,000, almost 85% were under $20,000, and half were below $10,000. This demonstrated the consumer affordability of an automobile in 1995. 
+
+<p float="center">
+  <img src="https://github.com/shanshanlao/MMA-Projects/blob/main/Automobile-safetylevel-predictions/graphs/num_histogram_price.png" width="400" /> 
+</p>
+
 
 It is also noted that these variables have huge differences in their range. (stroke and price for example). Such inconsistency might affect the interpretability of the model and generate biased results, as variables with larger values tend to be weighted more heavily. In an attempt to eliminate this impact, the scale() function was introduced to ensure that every numeric variable is measured in the same way, while retaining the original distribution. 
 
